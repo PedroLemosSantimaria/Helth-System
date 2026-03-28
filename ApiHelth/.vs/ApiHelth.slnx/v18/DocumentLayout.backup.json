@@ -1,0 +1,309 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\services\\triagemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\services\\triagemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\repositories\\atendimentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\repositories\\atendimentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\services\\atendimentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\services\\atendimentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\controllers\\pacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\controllers\\pacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\controllers\\atendimentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\controllers\\atendimentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\models\\atendimento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\models\\atendimento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\models\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\models\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\repositories\\iatendimentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\repositories\\iatendimentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\dto\\atendimentodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\dto\\atendimentodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\dto\\pacientedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\dto\\pacientedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\dto\\triagemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\dto\\triagemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\controllers\\triagemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\controllers\\triagemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\repositories\\triagemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\repositories\\triagemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|c:\\users\\pedro\\documentos\\apihelth\\apihelth\\repositories\\itriagemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F95599A-AE3D-43DD-86E1-DBFD88EB92EB}|ApiHelth\\ApiHelth.csproj|solutionrelative:apihelth\\repositories\\itriagemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AtendimentoService.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Services\\AtendimentoService.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\Services\\AtendimentoService.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Services\\AtendimentoService.cs",
+              "RelativeToolTip": "ApiHelth\\Services\\AtendimentoService.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAUwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T00:34:59.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TriagemDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\DTO\\TriagemDTO.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\DTO\\TriagemDTO.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\DTO\\TriagemDTO.cs",
+              "RelativeToolTip": "ApiHelth\\DTO\\TriagemDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T00:25:05.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PacienteController.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Controllers\\PacienteController.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\Controllers\\PacienteController.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Controllers\\PacienteController.cs",
+              "RelativeToolTip": "ApiHelth\\Controllers\\PacienteController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwB0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T10:41:44.358Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IAtendimentoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Repositories\\IAtendimentoRepository.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\Repositories\\IAtendimentoRepository.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Repositories\\IAtendimentoRepository.cs",
+              "RelativeToolTip": "ApiHelth\\Repositories\\IAtendimentoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T00:26:02.893Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AtendimentoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Repositories\\AtendimentoRepository.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\Repositories\\AtendimentoRepository.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Repositories\\AtendimentoRepository.cs",
+              "RelativeToolTip": "ApiHelth\\Repositories\\AtendimentoRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T00:26:33.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Atendimento.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Models\\Atendimento.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\Models\\Atendimento.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Models\\Atendimento.cs",
+              "RelativeToolTip": "ApiHelth\\Models\\Atendimento.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-27T04:25:02.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TriagemService.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Services\\TriagemService.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\Services\\TriagemService.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Services\\TriagemService.cs",
+              "RelativeToolTip": "ApiHelth\\Services\\TriagemService.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAUwBQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T00:35:13.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AtendimentoController.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Controllers\\AtendimentoController.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\Controllers\\AtendimentoController.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Controllers\\AtendimentoController.cs",
+              "RelativeToolTip": "ApiHelth\\Controllers\\AtendimentoController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwB8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T00:35:43.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "TriagemRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Repositories\\TriagemRepository.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\Repositories\\TriagemRepository.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Repositories\\TriagemRepository.cs",
+              "RelativeToolTip": "ApiHelth\\Repositories\\TriagemRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T00:32:09.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Paciente.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Models\\Paciente.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\Models\\Paciente.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Models\\Paciente.cs",
+              "RelativeToolTip": "ApiHelth\\Models\\Paciente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-27T04:42:29.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Program.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\Program.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Program.cs",
+              "RelativeToolTip": "ApiHelth\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-27T01:42:45.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PacienteDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\DTO\\PacienteDTO.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\DTO\\PacienteDTO.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\DTO\\PacienteDTO.cs",
+              "RelativeToolTip": "ApiHelth\\DTO\\PacienteDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-27T01:59:54.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AtendimentoDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\DTO\\AtendimentoDTO.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\DTO\\AtendimentoDTO.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\DTO\\AtendimentoDTO.cs",
+              "RelativeToolTip": "ApiHelth\\DTO\\AtendimentoDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T00:23:18.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TriagemController.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Controllers\\TriagemController.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\Controllers\\TriagemController.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Controllers\\TriagemController.cs",
+              "RelativeToolTip": "ApiHelth\\Controllers\\TriagemController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T00:36:59.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "ApiHelth\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T00:57:30.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "ApiHelth\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Properties\\launchSettings.json",
+              "RelativeToolTip": "ApiHelth\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAYwA8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-27T01:35:26.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ITriagemRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Repositories\\ITriagemRepository.cs",
+              "RelativeDocumentMoniker": "ApiHelth\\Repositories\\ITriagemRepository.cs",
+              "ToolTip": "C:\\Users\\Pedro\\Documentos\\ApiHelth\\ApiHelth\\Repositories\\ITriagemRepository.cs",
+              "RelativeToolTip": "ApiHelth\\Repositories\\ITriagemRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T00:31:59.714Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
