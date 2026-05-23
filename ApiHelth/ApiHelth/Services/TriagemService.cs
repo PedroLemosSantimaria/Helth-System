@@ -42,12 +42,12 @@ namespace ApiHelth.Services
             var atendimento = await _atendimentoRepository.GetByIdAsync(dto.AtendimentoId);
 
             if (atendimento == null)
-                return null;
+                throw new Exception("Atendimento não encontrado.");
 
             var triagemExistente = await _triagemRepository.GetByAtendimentoId(dto.AtendimentoId);
 
             if (triagemExistente != null)
-                throw new Exception("Atendimento já possui triagem");
+                throw new Exception("Este atendimento já possui uma triagem cadastrada.");
 
             var triagem = new Triagem
             {

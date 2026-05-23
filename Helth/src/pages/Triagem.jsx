@@ -72,8 +72,9 @@ export default function Triagem() {
         especialidadeId: "",
       });
       carregarTriagens();
-    } catch {
-      setErro("Nao foi possivel salvar a triagem.");
+    } catch (error) {
+      const mensagemApi = error.response?.data?.message;
+      setErro(mensagemApi || "Nao foi possivel salvar a triagem.");
     } finally {
       setSalvando(false);
     }

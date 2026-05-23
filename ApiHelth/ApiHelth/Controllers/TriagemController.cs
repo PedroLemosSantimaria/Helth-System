@@ -30,7 +30,7 @@ namespace ApiHelth.Controllers
                 var result = await _service.Create(dto);
 
                 if (result == null)
-                    return BadRequest(new { message = "Atendimento inválido" });
+                    return BadRequest(new { message = "Atendimento não encontrado." });
 
                 return Created("", result);
             }
