@@ -15,6 +15,13 @@ namespace ApiHelth.Controllers
             _service = service;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _service.GetAll();
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(TriagemCreateDTO dto)
         {
