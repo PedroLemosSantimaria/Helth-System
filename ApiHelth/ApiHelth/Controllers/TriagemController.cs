@@ -15,6 +15,13 @@ namespace ApiHelth.Controllers
             _service = service;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _service.GetAll();
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(TriagemCreateDTO dto)
         {
@@ -23,7 +30,7 @@ namespace ApiHelth.Controllers
                 var result = await _service.Create(dto);
 
                 if (result == null)
-                    return BadRequest(new { message = "Atendimento inválido" });
+                    return BadRequest(new { message = "Atendimento não encontrado." });
 
                 return Created("", result);
             }

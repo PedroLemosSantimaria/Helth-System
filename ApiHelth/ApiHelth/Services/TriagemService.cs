@@ -17,17 +17,37 @@ namespace ApiHelth.Services
             _atendimentoRepository = atendimentoRepository;
         }
 
+        public async Task<List<TriagemResponseDTO>> GetAll()
+        {
+            var triagens = await _triagemRepository.GetAllAsync();
+
+            return triagens.Select(t => new TriagemResponseDTO
+            {
+                Id = t.Id,
+                AtendimentoId = t.AtendimentoId,
+                PacienteNome = t.Atendimento?.Paciente?.Nome,
+                Sintomas = t.Sintomas,
+                PressaoArterial = t.PressaoArterial,
+                Peso = t.Peso,
+                Altura = t.Altura,
+                EspecialidadeId = t.EspecialidadeId,
+                EspecialidadeNome = t.Especialidade?.Nome,
+                Status = t.Atendimento?.StatusAtendimento?.Nome,
+                DataHoraChegada = t.Atendimento?.DataHoraChegada
+            }).ToList();
+        }
+
         public async Task<TriagemResponseDTO> Create(TriagemCreateDTO dto)
         {
             var atendimento = await _atendimentoRepository.GetByIdAsync(dto.AtendimentoId);
 
             if (atendimento == null)
-                return null;
+                throw new Exception("Atendimento não encontrado.");
 
             var triagemExistente = await _triagemRepository.GetByAtendimentoId(dto.AtendimentoId);
 
             if (triagemExistente != null)
-                throw new Exception("Atendimento já possui triagem");
+                throw new Exception("Este atendimento já possui uma triagem cadastrada.");
 
             var triagem = new Triagem
             {
@@ -51,6 +71,9 @@ namespace ApiHelth.Services
                 Id = triagem.Id,
                 AtendimentoId = triagem.AtendimentoId,
                 Sintomas = triagem.Sintomas,
+                PressaoArterial = triagem.PressaoArterial,
+                Peso = triagem.Peso,
+                Altura = triagem.Altura,
                 EspecialidadeId = triagem.EspecialidadeId
             };
         }

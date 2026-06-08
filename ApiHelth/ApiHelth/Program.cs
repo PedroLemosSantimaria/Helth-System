@@ -19,9 +19,11 @@ builder.Services.AddScoped<PacienteService>();
 
 builder.Services.AddScoped<IAtendimentoRepository, AtendimentoRepository>();
 builder.Services.AddScoped<ITriagemRepository, TriagemRepository>();
+builder.Services.AddScoped<IEspecialidadeRepository, EspecialidadeRepository>();
 
 builder.Services.AddScoped<AtendimentoService>();
 builder.Services.AddScoped<TriagemService>();
+builder.Services.AddScoped<EspecialidadeService>();
 
 builder.Services.AddCors(options =>
 {
