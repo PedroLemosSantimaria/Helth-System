@@ -26,10 +26,28 @@ namespace ApiHelth.Controllers
             return Created("", result);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _service.GetAll();
+            return Ok(result);
+        }
+
         [HttpGet("fila")]
         public async Task<IActionResult> GetFila()
         {
             var result = await _service.GetFilaAtual();
+            return Ok(result);
+        }
+
+        [HttpGet("atual")]
+        public async Task<IActionResult> GetAtual()
+        {
+            var result = await _service.GetAtendimentoAtual();
+
+            if (result == null)
+                return NotFound(new { message = "Nenhum paciente em triagem" });
+
             return Ok(result);
         }
 
@@ -40,6 +58,17 @@ namespace ApiHelth.Controllers
 
             if (result == null)
                 return NotFound(new { message = "Fila vazia" });
+
+            return Ok(result);
+        }
+
+        [HttpPatch("{id}/finalizar")]
+        public async Task<IActionResult> Finalizar(int id)
+        {
+            var result = await _service.Finalizar(id);
+
+            if (result == null)
+                return NotFound(new { message = "Atendimento não encontrado" });
 
             return Ok(result);
         }

@@ -53,6 +53,17 @@ namespace ApiHelth.Controllers
             return Ok(result);
         }
 
+        [HttpGet("{id}/historico")]
+        public async Task<IActionResult> GetHistorico(int id)
+        {
+            var result = await _service.GetHistorico(id);
+
+            if (result == null)
+                return NotFound(new { message = "Paciente não encontrado" });
+
+            return Ok(result);
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, PacienteCreateDTO dto)
         {

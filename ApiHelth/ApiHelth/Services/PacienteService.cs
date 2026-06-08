@@ -21,7 +21,9 @@ namespace ApiHelth.Services
             {
                 Id = p.Id,
                 Nome = p.Nome,
-                Telefone = p.Telefone
+                Telefone = p.Telefone,
+                Sexo = p.Sexo,
+                Email = p.Email
             }).ToList();
         }
 
@@ -36,7 +38,47 @@ namespace ApiHelth.Services
             {
                 Id = paciente.Id,
                 Nome = paciente.Nome,
-                Telefone = paciente.Telefone
+                Telefone = paciente.Telefone,
+                Sexo = paciente.Sexo,
+                Email = paciente.Email
+            };
+        }
+
+        public async Task<PacienteHistoricoDTO> GetHistorico(int id)
+        {
+            var paciente = await _repository.GetByIdWithHistoricoAsync(id);
+
+            if (paciente == null)
+                return null;
+
+            return new PacienteHistoricoDTO
+            {
+                Paciente = new PacienteResponseDTO
+                {
+                    Id = paciente.Id,
+                    Nome = paciente.Nome,
+                    Telefone = paciente.Telefone,
+                    Sexo = paciente.Sexo,
+                    Email = paciente.Email
+                },
+                Atendimentos = paciente.Atendimentos
+                    .OrderByDescending(a => a.DataHoraChegada)
+                    .Select(a => new PacienteAtendimentoHistoricoDTO
+                    {
+                        Id = a.Id,
+                        NumeroSequencial = a.NumeroSequencial,
+                        Status = a.StatusAtendimento?.Nome,
+                        DataHoraChegada = a.DataHoraChegada,
+                        Triagem = a.Triagem == null ? null : new PacienteTriagemHistoricoDTO
+                        {
+                            Id = a.Triagem.Id,
+                            Sintomas = a.Triagem.Sintomas,
+                            PressaoArterial = a.Triagem.PressaoArterial,
+                            Peso = a.Triagem.Peso,
+                            Altura = a.Triagem.Altura,
+                            EspecialidadeNome = a.Triagem.Especialidade?.Nome
+                        }
+                    }).ToList()
             };
         }
 
@@ -57,7 +99,9 @@ namespace ApiHelth.Services
             {
                 Id = paciente.Id,
                 Nome = paciente.Nome,
-                Telefone = paciente.Telefone
+                Telefone = paciente.Telefone,
+                Sexo = paciente.Sexo,
+                Email = paciente.Email
             };
         }
 
@@ -81,7 +125,9 @@ namespace ApiHelth.Services
             {
                 Id = paciente.Id,
                 Nome = paciente.Nome,
-                Telefone = paciente.Telefone
+                Telefone = paciente.Telefone,
+                Sexo = paciente.Sexo,
+                Email = paciente.Email
             };
         }
 

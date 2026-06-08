@@ -26,6 +26,7 @@ namespace ApiHelth.Repositories
         {
             return await _context.Atendimentos
                 .Include(a => a.StatusAtendimento)
+                .Include(a => a.Paciente)
                 .FirstOrDefaultAsync(a => a.Id == id);
         }
 

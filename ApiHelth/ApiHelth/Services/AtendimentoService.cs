@@ -42,9 +42,20 @@ namespace ApiHelth.Services
                 Id = atendimento.Id,
                 NumeroSequencial = atendimento.NumeroSequencial,
                 PacienteId = atendimento.PacienteId,
+                PacienteNome = paciente.Nome,
                 Status = "Aguardando",
                 DataHoraChegada = atendimento.DataHoraChegada
             };
+        }
+
+        public async Task<List<AtendimentoResponseDTO>> GetAll()
+        {
+            var atendimentos = await _repository.GetAllAsync();
+
+            return atendimentos
+                .OrderByDescending(a => a.DataHoraChegada)
+                .Select(MapToResponse)
+                .ToList();
         }
 
         public async Task<List<AtendimentoResponseDTO>> GetFilaAtual()
@@ -90,8 +101,51 @@ namespace ApiHelth.Services
                 Id = proximo.Id,
                 NumeroSequencial = proximo.NumeroSequencial,
                 PacienteId = proximo.PacienteId,
+                PacienteNome = proximo.Paciente?.Nome,
                 Status = "Em Triagem",
                 DataHoraChegada = proximo.DataHoraChegada
+            };
+        }
+
+        public async Task<AtendimentoResponseDTO> GetAtendimentoAtual()
+        {
+            var atendimentos = await _repository.GetAllAsync();
+
+            var atual = atendimentos
+                .Where(a => a.StatusAtendimentoId == 2)
+                .OrderBy(a => a.NumeroSequencial)
+                .FirstOrDefault();
+
+            return atual == null ? null : MapToResponse(atual);
+        }
+
+        public async Task<AtendimentoResponseDTO> Finalizar(int id)
+        {
+            var atendimento = await _repository.GetByIdAsync(id);
+
+            if (atendimento == null)
+                return null;
+
+            atendimento.StatusAtendimentoId = 6;
+
+            _repository.Update(atendimento);
+            await _repository.SaveChangesAsync();
+
+            atendimento.StatusAtendimento = new StatusAtendimento { Id = 6, Nome = "Finalizado" };
+
+            return MapToResponse(atendimento);
+        }
+
+        private AtendimentoResponseDTO MapToResponse(Atendimento atendimento)
+        {
+            return new AtendimentoResponseDTO
+            {
+                Id = atendimento.Id,
+                NumeroSequencial = atendimento.NumeroSequencial,
+                PacienteId = atendimento.PacienteId,
+                PacienteNome = atendimento.Paciente?.Nome,
+                Status = atendimento.StatusAtendimento?.Nome,
+                DataHoraChegada = atendimento.DataHoraChegada
             };
         }
     }

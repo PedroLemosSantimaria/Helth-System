@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import api from "../api/client";
 
 export default function Atendimento() {
   const [fila, setFila] = useState([]);
+  const [pacientes, setPacientes] = useState([]);
   const [pacienteId, setPacienteId] = useState("");
+  const [pacienteAtual, setPacienteAtual] = useState(null);
   const [loading, setLoading] = useState(true);
   const [erro, setErro] = useState("");
   const [acao, setAcao] = useState(false);
 
-  const load = async () => {
+  const carregarFila = useCallback(async () => {
     try {
       setErro("");
       const res = await api.get("/Atendimento/fila");
@@ -18,10 +20,32 @@ export default function Atendimento() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  const carregarPacientes = useCallback(async () => {
+    try {
+      const res = await api.get("/Paciente");
+      setPacientes(res.data);
+    } catch {
+      setErro("Nao foi possivel carregar os pacientes.");
+    }
+  }, []);
+
+  const carregarAtual = useCallback(async () => {
+    try {
+      const res = await api.get("/Atendimento/atual");
+      setPacienteAtual(res.data);
+    } catch {
+      setPacienteAtual(null);
+    }
+  }, []);
+
+  const load = useCallback(async () => {
+    await Promise.all([carregarFila(), carregarPacientes(), carregarAtual()]);
+  }, [carregarAtual, carregarFila, carregarPacientes]);
 
   const criar = async () => {
-    if (!pacienteId) return alert("Informe o ID do paciente");
+    if (!pacienteId) return alert("Selecione um paciente");
 
     try {
       setAcao(true);
@@ -29,8 +53,9 @@ export default function Atendimento() {
       await api.post("/Atendimento", { pacienteId: Number(pacienteId) });
       setPacienteId("");
       load();
-    } catch {
-      setErro("Nao foi possivel adicionar o paciente na fila.");
+    } catch (error) {
+      const mensagemApi = error.response?.data?.message;
+      setErro(mensagemApi || "Nao foi possivel adicionar o paciente na fila.");
     } finally {
       setAcao(false);
     }
@@ -40,10 +65,29 @@ export default function Atendimento() {
     try {
       setAcao(true);
       setErro("");
-      await api.post("/Atendimento/chamar-proximo");
+      const res = await api.post("/Atendimento/chamar-proximo");
+      setPacienteAtual(res.data);
       load();
-    } catch {
-      setErro("Nao foi possivel chamar o proximo paciente.");
+    } catch (error) {
+      const mensagemApi = error.response?.data?.message;
+      setErro(mensagemApi || "Nao foi possivel chamar o proximo paciente.");
+    } finally {
+      setAcao(false);
+    }
+  };
+
+  const finalizar = async () => {
+    if (!pacienteAtual) return;
+
+    try {
+      setAcao(true);
+      setErro("");
+      await api.patch(`/Atendimento/${pacienteAtual.id}/finalizar`);
+      setPacienteAtual(null);
+      load();
+    } catch (error) {
+      const mensagemApi = error.response?.data?.message;
+      setErro(mensagemApi || "Nao foi possivel finalizar o atendimento.");
     } finally {
       setAcao(false);
     }
@@ -53,7 +97,7 @@ export default function Atendimento() {
     load();
     const interval = setInterval(load, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [load]);
 
   return (
     <div className="space-y-6">
@@ -72,17 +116,47 @@ export default function Atendimento() {
       )}
 
       <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+        <h3 className="mb-4 text-lg font-semibold text-slate-900">Paciente atual</h3>
+        {pacienteAtual ? (
+          <div className="grid gap-3 md:grid-cols-[1fr_auto] md:items-center">
+            <div>
+              <p className="text-xl font-bold text-slate-900">{pacienteAtual.pacienteNome}</p>
+              <p className="mt-1 text-sm text-slate-500">
+                Senha #{pacienteAtual.numeroSequencial} - Atendimento {pacienteAtual.id}
+              </p>
+              <span className="mt-3 inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+                {pacienteAtual.status}
+              </span>
+            </div>
+            <button
+              onClick={finalizar}
+              disabled={acao}
+              className="rounded-lg bg-slate-900 px-4 py-2 font-semibold text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+            >
+              Finalizar atendimento
+            </button>
+          </div>
+        ) : (
+          <p className="text-sm text-slate-500">Nenhum paciente em triagem no momento.</p>
+        )}
+      </section>
+
+      <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
         <div className="grid gap-3 md:grid-cols-[1fr_auto_auto] md:items-end">
           <label className="text-sm font-medium text-slate-700">
-            ID do paciente
-            <input
-              placeholder="Ex: 1"
-              type="number"
-              min="1"
+            Paciente
+            <select
               value={pacienteId}
               onChange={(e) => setPacienteId(e.target.value)}
               className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-            />
+            >
+              <option value="">Selecione pelo nome</option>
+              {pacientes.map((paciente) => (
+                <option key={paciente.id} value={paciente.id}>
+                  {paciente.nome} - ID {paciente.id}
+                </option>
+              ))}
+            </select>
           </label>
           <button
             onClick={criar}

@@ -23,6 +23,18 @@ namespace ApiHelth.Repositories
             return await _context.Pacientes.FindAsync(id);
         }
 
+        public async Task<Paciente> GetByIdWithHistoricoAsync(int id)
+        {
+            return await _context.Pacientes
+                .Include(p => p.Atendimentos)
+                    .ThenInclude(a => a.StatusAtendimento)
+                .Include(p => p.Atendimentos)
+                    .ThenInclude(a => a.Triagem)
+                        .ThenInclude(t => t.Especialidade)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.Id == id);
+        }
+
         public async Task AddAsync(Paciente paciente)
         {
             await _context.Pacientes.AddAsync(paciente);

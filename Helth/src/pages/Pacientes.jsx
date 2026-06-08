@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import api from "../api/client";
 
 export default function Pacientes() {
@@ -6,6 +6,9 @@ export default function Pacientes() {
   const [loading, setLoading] = useState(true);
   const [salvando, setSalvando] = useState(false);
   const [erro, setErro] = useState("");
+  const [busca, setBusca] = useState("");
+  const [historico, setHistorico] = useState(null);
+  const [loadingHistorico, setLoadingHistorico] = useState(false);
   const [form, setForm] = useState({
     nome: "",
     telefone: "",
@@ -72,6 +75,54 @@ export default function Pacientes() {
     } finally {
       setSalvando(false);
     }
+  };
+
+  const remover = async (paciente) => {
+    const confirmar = window.confirm(`Deseja excluir o paciente ${paciente.nome}?`);
+
+    if (!confirmar) return;
+
+    try {
+      setErro("");
+      await api.delete(`/Paciente/${paciente.id}`);
+      setHistorico(null);
+      load();
+    } catch (error) {
+      const mensagemApi = error.response?.data?.message;
+      setErro(mensagemApi || "Nao foi possivel excluir o paciente.");
+    }
+  };
+
+  const verHistorico = async (pacienteId) => {
+    try {
+      setErro("");
+      setLoadingHistorico(true);
+      const res = await api.get(`/Paciente/${pacienteId}/historico`);
+      setHistorico(res.data);
+    } catch {
+      setErro("Nao foi possivel carregar o historico do paciente.");
+    } finally {
+      setLoadingHistorico(false);
+    }
+  };
+
+  const pacientesFiltrados = useMemo(() => {
+    const termo = busca.trim().toLowerCase();
+
+    if (!termo) return pacientes;
+
+    return pacientes.filter((p) => {
+      const nome = p.nome?.toLowerCase() || "";
+      const email = p.email?.toLowerCase() || "";
+      const telefone = p.telefone?.toLowerCase() || "";
+
+      return nome.includes(termo) || email.includes(termo) || telefone.includes(termo);
+    });
+  }, [busca, pacientes]);
+
+  const formatarData = (data) => {
+    if (!data) return "Data nao informada";
+    return new Date(data).toLocaleString("pt-BR");
   };
 
   useEffect(() => {
@@ -156,32 +207,106 @@ export default function Pacientes() {
       </section>
 
       <section className="rounded-lg border border-slate-200 bg-white shadow-sm">
-        <div className="border-b border-slate-200 px-5 py-4">
+        <div className="grid gap-3 border-b border-slate-200 px-5 py-4 md:grid-cols-[1fr_260px] md:items-center">
           <h3 className="text-lg font-semibold text-slate-900">Pacientes cadastrados</h3>
+          <input
+            placeholder="Buscar por nome, email ou telefone"
+            value={busca}
+            onChange={(e) => setBusca(e.target.value)}
+            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+          />
         </div>
 
         {loading ? (
           <p className="p-5 text-sm text-slate-500">Carregando pacientes...</p>
-        ) : pacientes.length === 0 ? (
-          <p className="p-5 text-sm text-slate-500">Nenhum paciente cadastrado.</p>
+        ) : pacientesFiltrados.length === 0 ? (
+          <p className="p-5 text-sm text-slate-500">Nenhum paciente encontrado.</p>
         ) : (
           <div className="divide-y divide-slate-100">
-            {pacientes.map((p) => (
-              <div key={p.id} className="grid gap-2 px-5 py-4 md:grid-cols-4 md:items-center">
+            {pacientesFiltrados.map((p) => (
+              <div key={p.id} className="grid gap-3 px-5 py-4 lg:grid-cols-[1fr_1fr_1fr_auto] lg:items-center">
                 <div>
                   <p className="font-semibold text-slate-900">{p.nome}</p>
                   <p className="text-xs text-slate-500">ID {p.id}</p>
                 </div>
-                <p className="text-sm text-slate-600">{p.telefone}</p>
-                <p className="text-sm text-slate-600">{p.email}</p>
+                <div>
+                  <p className="text-sm text-slate-600">{p.telefone}</p>
+                  <p className="text-sm text-slate-600">{p.email}</p>
+                </div>
                 <span className="w-fit rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
                   {p.sexo}
                 </span>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => verHistorico(p.id)}
+                    className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+                  >
+                    Ver historico
+                  </button>
+                  <button
+                    onClick={() => remover(p)}
+                    className="rounded-lg bg-red-600 px-3 py-2 text-sm font-semibold text-white transition hover:bg-red-700"
+                  >
+                    Excluir
+                  </button>
+                </div>
               </div>
             ))}
           </div>
         )}
       </section>
+
+      {loadingHistorico && (
+        <div className="rounded-lg border border-slate-200 bg-white p-5 text-sm text-slate-500 shadow-sm">
+          Carregando historico...
+        </div>
+      )}
+
+      {historico && (
+        <section className="rounded-lg border border-slate-200 bg-white shadow-sm">
+          <div className="border-b border-slate-200 px-5 py-4">
+            <h3 className="text-lg font-semibold text-slate-900">
+              Historico de {historico.paciente.nome}
+            </h3>
+            <p className="mt-1 text-sm text-slate-500">
+              {historico.paciente.email} - {historico.paciente.telefone}
+            </p>
+          </div>
+
+          {historico.atendimentos.length === 0 ? (
+            <p className="p-5 text-sm text-slate-500">Nenhum atendimento encontrado.</p>
+          ) : (
+            <div className="divide-y divide-slate-100">
+              {historico.atendimentos.map((atendimento) => (
+                <div key={atendimento.id} className="px-5 py-4">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-semibold text-blue-600">#{atendimento.numeroSequencial}</span>
+                    <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+                      {atendimento.status}
+                    </span>
+                    <span className="text-xs text-slate-500">
+                      {formatarData(atendimento.dataHoraChegada)}
+                    </span>
+                  </div>
+
+                  {atendimento.triagem ? (
+                    <div className="mt-3 rounded-lg bg-slate-50 p-3 text-sm text-slate-700">
+                      <p>{atendimento.triagem.sintomas}</p>
+                      <p className="mt-1 text-xs text-slate-500">
+                        {atendimento.triagem.especialidadeNome} - Pressao:{" "}
+                        {atendimento.triagem.pressaoArterial || "-"} - Peso:{" "}
+                        {atendimento.triagem.peso} kg - Altura: {atendimento.triagem.altura} m
+                      </p>
+                    </div>
+                  ) : (
+                    <p className="mt-2 text-sm text-slate-500">Sem triagem registrada.</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
     </div>
   );
 }
