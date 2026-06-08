@@ -1,103 +1,156 @@
-# Sistema de Atendimento Hospitalar
+# 📌 Sistema de Atendimento Hospitalar
 
-Sistema desenvolvido para disciplina/projeto de faculdade com o objetivo de
-gerenciar um fluxo simples de atendimento hospitalar: cadastro de pacientes,
-fila de atendimento, chamada do proximo paciente, triagem e dashboard.
+## 📖 Visão Geral
+Este sistema tem como objetivo gerenciar o fluxo de atendimento de pacientes em uma unidade de saúde, controlando desde o cadastro até a triagem e encaminhamento.
 
-## Estrutura do projeto
+## 🧪 Tecnologias Utilizadas
+- **Back-end:** .NET Core (API REST - Code First)
+- **Front-end:** React JS (Vite)
+- **Banco de Dados:** SQL Server + Entity Framework
+
+---
+
+## 📋 Requisitos
+
+### ✅ Requisitos Funcionais
+
+#### **RF01 - Cadastro de Pacientes**
+O sistema deve permitir cadastrar pacientes com:
+- Nome
+- Telefone
+- Sexo
+- Email
+
+#### **RF02 - Listagem de Pacientes**
+O sistema deve listar todos os pacientes cadastrados.
+
+#### **RF03 - Atualização de Pacientes**
+O sistema deve permitir editar os dados de um paciente.
+
+#### **RF04 - Exclusão de Pacientes**
+O sistema deve permitir excluir pacientes.
+
+#### **RF05 - Criar Atendimento**
+O sistema deve:
+1. Gerar atendimento vinculado a um paciente
+2. Gerar número sequencial automático
+3. Registrar data/hora de chegada
+4. Definir status inicial como **Aguardando**
+
+#### **RF06 - Fila de Atendimento**
+O sistema deve:
+- Listar atendimentos com status **Aguardando**
+- Ordenar por número sequencial
+
+#### **RF07 - Chamar Próximo Paciente**
+O sistema deve:
+- Selecionar o próximo paciente da fila
+- Alterar status para **Em Triagem**
+
+#### **RF08 - Realizar Triagem**
+O sistema deve permitir registrar:
+- Sintomas
+- Pressão arterial
+- Peso
+- Altura
+- Especialidade
+
+> **Nota:** Após o registro, o status deve ser alterado para **Triado**.
+
+#### **RF09 - Dashboard**
+O sistema deve exibir:
+- Pacientes
+- Atendimentos
+- Triagens
+
+---
+
+### ⚙️ Requisitos Não Funcionais
+- API RESTful
+- Uso de Entity Framework (Code First)
+- Persistência em banco relacional
+- Front-end SPA (React)
+- Respostas em JSON
+
+---
+
+## 🛠️ Como montar o ambiente local
+
+Esta seção complementa o README com um passo a passo para rodar o projeto em outra máquina.
+
+### Estrutura do projeto
 
 ```text
 Helth-System/
   ApiHelth/
-    ApiHelth/        # Backend ASP.NET Core Web API
-  Helth/             # Frontend React + Vite
+    ApiHelth/        # Back-end ASP.NET Core Web API
+  Helth/             # Front-end React + Vite
 ```
 
-## Tecnologias
+### Pré-requisitos
 
-- Backend: ASP.NET Core Web API (.NET 10), C# e Entity Framework Core
-- Frontend: React, Vite, React Router, Tailwind CSS e Axios
-- Banco de dados: SQL Server Express
-- Banco local usado no projeto: `HospitalDb`
-- Instancia SQL Server esperada: `SQLEXPRESS`
+Instale antes de rodar o projeto:
 
-## Funcionalidades principais
+- Git
+- Node.js compatível com o Vite do projeto
+- .NET 10 SDK
+- SQL Server Express
+- SQL Server Management Studio, opcional, mas recomendado
 
-- Cadastro e listagem de pacientes
-- Criacao de atendimento vinculado a paciente
-- Listagem da fila de atendimento
-- Chamada do proximo paciente
-- Cadastro de triagem com sintomas, pressao arterial, peso, altura e especialidade
-- Listagem de triagens salvas
-- Dashboard com resumo do sistema
-
-## Pre-requisitos para rodar em outra maquina
-
-Instale os itens abaixo antes de iniciar:
-
-1. Node.js compativel com o Vite usado no projeto
-2. .NET 10 SDK
-3. SQL Server Express
-4. SQL Server Management Studio, opcional, mas recomendado para conferir o banco
-5. Git
-
-Ao instalar o SQL Server Express, use ou confirme a instancia:
+Ao instalar o SQL Server Express, use ou confirme a instância:
 
 ```text
 SQLEXPRESS
 ```
 
-O backend esta configurado para conectar em:
+O back-end está configurado para usar o banco local:
 
 ```text
-Server=.\SQLEXPRESS;Database=HospitalDb;Trusted_Connection=True;TrustServerCertificate=True;
+HospitalDb
 ```
 
-Essa configuracao fica em:
+A connection string fica em `ApiHelth/ApiHelth/appsettings.json`:
 
-```text
-ApiHelth/ApiHelth/appsettings.json
+```json
+"DefaultConnection": "Server=.\\SQLEXPRESS;Database=HospitalDb;Trusted_Connection=True;TrustServerCertificate=True;"
 ```
 
-## Passo a passo de instalacao
-
-### 1. Clonar o repositorio
+### 1. Clonar o repositório
 
 ```bash
 git clone https://github.com/PedroLemosSantimaria/Helth-System.git
 cd Helth-System
 ```
 
-Se estiver trabalhando em uma branch especifica:
+Se for trabalhar na branch de melhorias:
 
 ```bash
 git switch melhorias-funcionais-vitor
 ```
 
-### 2. Configurar o frontend
+### 2. Configurar o front-end
 
-Entre na pasta do frontend:
+Entre na pasta do front-end:
 
 ```bash
 cd Helth
 ```
 
-Instale as dependencias:
+Instale as dependências:
 
 ```bash
 npm install
 ```
 
-Confira se existe o arquivo `.env` dentro da pasta `Helth`.
-Ele deve apontar para a API local:
+Confira se existe o arquivo `Helth/.env` com:
 
 ```env
 VITE_API_URL=http://localhost:5139/api
 ```
 
-Se o arquivo nao existir, crie `Helth/.env` com esse conteudo.
+Se o arquivo não existir, crie o `.env` dentro da pasta `Helth` com esse conteúdo.
 
-### 3. Configurar o backend e o banco
+### 3. Configurar o back-end e o banco
 
 Volte para a raiz do projeto e entre na pasta da API:
 
@@ -105,46 +158,35 @@ Volte para a raiz do projeto e entre na pasta da API:
 cd ../ApiHelth/ApiHelth
 ```
 
-Restaure as dependencias do .NET:
+Restaure as dependências do .NET:
 
 ```bash
 dotnet restore
 ```
 
-Instale a ferramenta do Entity Framework, caso ainda nao tenha:
+Instale a ferramenta do Entity Framework, caso ainda não tenha:
 
 ```bash
 dotnet tool install --global dotnet-ef
 ```
 
-Se a ferramenta ja estiver instalada e precisar atualizar:
+Se ela já estiver instalada e precisar atualizar:
 
 ```bash
 dotnet tool update --global dotnet-ef
 ```
 
-Crie/atualize o banco `HospitalDb` no SQL Server Express:
+Crie ou atualize o banco `HospitalDb`:
 
 ```bash
 dotnet ef database update
 ```
 
-Esse comando usa as migrations do projeto e cria as tabelas iniciais, incluindo
-status de atendimento e especialidades cadastradas por seed.
+Esse comando usa as migrations já existentes e cria as tabelas iniciais, incluindo status de atendimento e especialidades.
 
-## Como rodar o projeto
+### 4. Rodar o back-end
 
-Use dois terminais: um para o backend e outro para o frontend.
-
-### Terminal 1: backend
-
-Na pasta:
-
-```text
-ApiHelth/ApiHelth
-```
-
-Execute:
+Na pasta `ApiHelth/ApiHelth`, execute:
 
 ```bash
 dotnet run
@@ -156,7 +198,7 @@ A API deve subir em:
 http://localhost:5139
 ```
 
-Os endpoints ficam sob:
+Os endpoints usam o prefixo:
 
 ```text
 http://localhost:5139/api
@@ -172,12 +214,12 @@ GET  http://localhost:5139/api/Triagem
 POST http://localhost:5139/api/Triagem
 ```
 
-### Terminal 2: frontend
+### 5. Rodar o front-end
 
-Na pasta:
+Em outro terminal, entre na pasta `Helth`:
 
-```text
-Helth
+```bash
+cd Helth
 ```
 
 Execute:
@@ -186,72 +228,32 @@ Execute:
 npm run dev
 ```
 
-O frontend deve abrir em:
+O front-end deve abrir em:
 
 ```text
 http://localhost:5173
 ```
 
-## Comandos de validacao
+### Comandos de validação
 
-Backend:
+Back-end:
 
 ```bash
 cd ApiHelth/ApiHelth
 dotnet build
 ```
 
-Frontend:
+Front-end:
 
 ```bash
 cd Helth
 npm run build
 ```
 
-## Fluxo de uso recomendado
+### Observações
 
-1. Cadastrar um paciente.
-2. Conferir se o paciente aparece na listagem.
-3. Adicionar o paciente na fila, se necessario.
-4. Chamar o proximo paciente.
-5. Fazer a triagem informando o ID do atendimento chamado.
-6. Escolher a especialidade pelo nome no select.
-7. Salvar a triagem.
-8. Conferir a triagem na listagem de triagens salvas.
-
-## Observacoes importantes
-
-- O frontend depende da API rodando em `http://localhost:5139/api`.
-- O banco esperado e `HospitalDb` no SQL Server Express `SQLEXPRESS`.
-- Nao e necessario criar migration para rodar o projeto atual; use as migrations ja existentes.
-- Se o `dotnet ef` nao for reconhecido, feche e abra o terminal apos instalar a ferramenta.
-- Se a API nao conectar ao banco, confira se o servico do SQL Server Express esta iniciado.
-- Se a porta `5173` estiver ocupada, o Vite pode sugerir outra porta no terminal.
-
-## Problemas comuns
-
-### Erro de conexao com SQL Server
-
-Verifique:
-
-- SQL Server Express instalado
-- Instancia `SQLEXPRESS` ativa
-- Connection string em `appsettings.json`
-- Autenticacao integrada do Windows habilitada
-
-### Frontend nao chama a API
-
-Verifique:
-
-- Backend rodando em `http://localhost:5139`
-- Arquivo `Helth/.env` com `VITE_API_URL=http://localhost:5139/api`
-- Reinicie o `npm run dev` depois de alterar o `.env`
-
-### Banco sem tabelas
-
-Execute novamente:
-
-```bash
-cd ApiHelth/ApiHelth
-dotnet ef database update
-```
+- O front-end depende da API rodando em `http://localhost:5139/api`.
+- O banco esperado é `HospitalDb` no SQL Server Express `SQLEXPRESS`.
+- Se alterar o arquivo `.env`, reinicie o `npm run dev`.
+- Se o comando `dotnet ef` não for reconhecido, feche e abra o terminal depois da instalação.
+- Se a API não conectar ao banco, confira se o serviço do SQL Server Express está iniciado.
