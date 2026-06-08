@@ -81,20 +81,16 @@ namespace ApiHelth.Services
 
         public async Task<AtendimentoResponseDTO> ChamarProximoPaciente()
         {
-            var atendimentos = await _repository.GetAllAsync();
-
-            var proximo = atendimentos
-                .Where(a => a.StatusAtendimentoId == 1)
-                .OrderBy(a => a.NumeroSequencial)
-                .FirstOrDefault();
+            var proximo = await _repository.GetProximoAguardandoAsync();
 
             if (proximo == null)
                 return null;
 
             proximo.StatusAtendimentoId = 2;
 
-            _repository.Update(proximo);
             await _repository.SaveChangesAsync();
+
+            proximo.StatusAtendimento = new StatusAtendimento { Id = 2, Nome = "Em Triagem" };
 
             return new AtendimentoResponseDTO
             {
@@ -109,12 +105,7 @@ namespace ApiHelth.Services
 
         public async Task<AtendimentoResponseDTO> GetAtendimentoAtual()
         {
-            var atendimentos = await _repository.GetAllAsync();
-
-            var atual = atendimentos
-                .Where(a => a.StatusAtendimentoId == 2)
-                .OrderBy(a => a.NumeroSequencial)
-                .FirstOrDefault();
+            var atual = await _repository.GetAtualEmTriagemAsync();
 
             return atual == null ? null : MapToResponse(atual);
         }
@@ -128,7 +119,6 @@ namespace ApiHelth.Services
 
             atendimento.StatusAtendimentoId = 6;
 
-            _repository.Update(atendimento);
             await _repository.SaveChangesAsync();
 
             atendimento.StatusAtendimento = new StatusAtendimento { Id = 6, Nome = "Finalizado" };

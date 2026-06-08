@@ -30,6 +30,26 @@ namespace ApiHelth.Repositories
                 .FirstOrDefaultAsync(a => a.Id == id);
         }
 
+        public async Task<Atendimento> GetProximoAguardandoAsync()
+        {
+            return await _context.Atendimentos
+                .Include(a => a.StatusAtendimento)
+                .Include(a => a.Paciente)
+                .Where(a => a.StatusAtendimentoId == 1)
+                .OrderBy(a => a.NumeroSequencial)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<Atendimento> GetAtualEmTriagemAsync()
+        {
+            return await _context.Atendimentos
+                .Include(a => a.StatusAtendimento)
+                .Include(a => a.Paciente)
+                .Where(a => a.StatusAtendimentoId == 2)
+                .OrderByDescending(a => a.NumeroSequencial)
+                .FirstOrDefaultAsync();
+        }
+
         public async Task AddAsync(Atendimento atendimento)
         {
             await _context.Atendimentos.AddAsync(atendimento);
